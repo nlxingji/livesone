@@ -53,9 +53,9 @@ def down():
 
 
 def see_wy():  # 网页浏览操作
-    i = 50
+    i = 30
     while i > 1:
-        if i < 15:
+        if i > 20:
             down()
         else:
             rd = random.randint(1, 10)
@@ -288,20 +288,19 @@ if __name__ == '__main__':
     except:
         pass
 
+close_otherpage()
 
-filename = "url.csv"
-url = []
-if filename != '':
-    with open(filename) as csvfile:
-        rows = csv.reader(csvfile)
-        for row in rows:
-            url.append(row[0])
-else:
-    print("You may not set the options correctly,please try again")
-
+url=[
+    'https://www.2345.com/?kq101020',
+    'https://www.sina.com.cn/',
+    'https://www.jd.com/',
+    'https://news.baidu.com/',
+    'http://www.sohu.com/',
+]
 counter = 0
 while True:
     counter += 1
+    print('counter'+str(counter))
     urlx=random.choice(url)
     print('正在打开网址'+ urlx)
     webbrowser.open(urlx,new=0,autoraise=True)
@@ -312,12 +311,5 @@ while True:
         time.sleep(random.randint(20,50))
     except:
         pass
+    close_otherpage()
 
-    if counter ==5:
-        try:
-            win32gui.SetForegroundWindow(Mhandle)
-            close_otherpage()
-            print('关闭所有页面')
-        except:
-            pass
-        counter=0
